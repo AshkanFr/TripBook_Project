@@ -1,3 +1,66 @@
+
+const TRIPBOOK_THEME_KEY = "tripbook-theme";
+
+function getSavedTheme() {
+    return localStorage.getItem(TRIPBOOK_THEME_KEY) || "light";
+}
+
+function applyTheme(theme) {
+    const isDark = theme === "dark";
+
+    document.documentElement.classList.toggle("dark-mode", isDark);
+
+    if (document.body) {
+        document.body.classList.toggle("dark-mode", isDark);
+    }
+
+    updateThemeButtons(theme);
+}
+
+function saveTheme(theme) {
+    localStorage.setItem(TRIPBOOK_THEME_KEY, theme);
+    applyTheme(theme);
+}
+
+function updateThemeButtons(theme) {
+    const buttons = document.querySelectorAll("[data-theme-toggle]");
+    const isDark = theme === "dark";
+
+    const icon = isDark
+        ? '<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.93 4.93l1.41 1.41"/><path d="M17.66 17.66l1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M4.93 19.07l1.41-1.41"/><path d="M17.66 6.34l1.41-1.41"/></svg>'
+        : '<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 7 7 0 1 0 20 15.5Z"/></svg>';
+
+    buttons.forEach(function (button) {
+        button.innerHTML = icon;
+        button.setAttribute("aria-label", isDark ? "تغییر به لایت مود" : "تغییر به دارک مود");
+        button.setAttribute("title", isDark ? "لایت مود" : "دارک مود");
+    });
+}
+
+function setupThemeToggle() {
+    applyTheme(getSavedTheme());
+
+    document.querySelectorAll("[data-theme-toggle]").forEach(function (button) {
+        if (button.dataset.themeReady === "true") {
+            return;
+        }
+
+        button.dataset.themeReady = "true";
+
+        button.addEventListener("click", function () {
+            const currentTheme = getSavedTheme();
+            const nextTheme = currentTheme === "dark" ? "light" : "dark";
+            saveTheme(nextTheme);
+        });
+    });
+}
+
+window.addEventListener("storage", function (event) {
+    if (event.key === TRIPBOOK_THEME_KEY) {
+        applyTheme(event.newValue || "light");
+    }
+});
+
 const persianDigits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
 
 const jalaliMonths = [
@@ -356,6 +419,7 @@ if ("scrollRestoration" in history) {
     history.scrollRestoration = "manual";
 }
 
+setupThemeToggle();
 setupLogin();
 setupCalendar();
 setupTripSearch();

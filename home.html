@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script>
+    (function () {
+        var theme = localStorage.getItem("tripbook-theme") || "light";
+
+        if (theme === "dark") {
+            document.documentElement.classList.add("dark-mode");
+        }
+    })();
+</script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Trip<span>Book</span></h2>
+                <p>سامانه خرید بلیط سفر</p>
+            </div>
+
+            <nav class="menu">
+                <a href="index.html" class="active"><span class="menu-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5"/><path d="M6.5 10v9h11v-9"/><path d="M10 19v-5h4v5"/></svg></span><span>خانه</span></a>
+                <a href="reservations.html" class=""><span class="menu-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v3"/><path d="M17 4v3"/><path d="M5 8h14"/><rect x="5" y="6" width="14" height="14" rx="3"/><path d="m9 14 2 2 4-5"/></svg></span><span>رزروهای من</span></a>
+                <a href="tickets.html" class=""><span class="menu-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8.5a2.5 2.5 0 0 0 0 5V17a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3.5a2.5 2.5 0 0 0 0-5V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v1.5Z"/><path d="M9 8h6"/><path d="M9 16h6"/><path d="M12 5v14"/></svg></span><span>بلیط‌های من</span></a>
+                <a href="wallet.html" class=""><span class="menu-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h13a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7.5A2.5 2.5 0 0 1 5.5 5H17"/><path d="M16 13h4"/><path d="M16 13.01v-.01"/></svg></span><span>کیف پول</span></a>
+                <a href="payments.html" class=""><span class="menu-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="12" rx="3"/><path d="M4 10h16"/><path d="M8 15h3"/><path d="M14 15h2"/></svg></span><span>پرداخت‌ها</span></a>
+                <a href="account.html" class=""><span class="menu-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5.5 19a6.5 6.5 0 0 1 13 0"/></svg></span><span>حساب کاربری</span></a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="navbar">
+                <div class="navbar-title">
+                    <h1>خانه</h1>
+                </div>
+
+                <div class="navbar-actions">
+                    <a class="logout-link" href="login.html">خروج</a>
+
+                    <button type="button" class="theme-toggle" data-theme-toggle aria-label="تغییر حالت نمایش"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 7 7 0 1 0 20 15.5Z"/></svg></button>
+
+                    <a class="account-chip" href="account.html">
+                        <span>حساب کاربری</span>
+                        <div class="avatar">A</div>
+                    </a>
+                </div>
+            </header>
+
+            <div class="page-content">
+                <section class="hero-search">
+                    <h2>کجا می‌خوای سفر کنی؟</h2>
+                    <div class="hero-subtitle">مبدا، مقصد و تاریخ سفرت رو انتخاب کن</div>
+
+                    <div class="search-box">
+                        <form>
+                            <div class="search-form">
+                                <div class="form-group">
+                                    <label>مبدا</label>
+                                    <input id="originInput" type="text" placeholder="تهران">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>مقصد</label>
+                                    <input id="destinationInput" type="text" placeholder="مشهد">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>تاریخ حرکت</label>
+                                    <input type="text" class="persian-date-input" placeholder="انتخاب تاریخ" readonly>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>نوع وسیله</label>
+                                    <select id="vehicleTypeInput">
+                                        <option>همه</option>
+                                        <option>اتوبوس</option>
+                                        <option>قطار</option>
+                                        <option>هواپیما</option>
+                                    </select>
+                                </div>
+
+                                <button type="button" id="searchBtn"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg> جستجو</button>
+                                <button type="button" id="showAllTripsBtn" class="btn-secondary">همه سفرها</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <section id="searchResults" class="section" style="display: none; margin-top: 24px;">
+                    <h3 id="resultTitle">نتایج جستجو</h3>
+                    <div id="resultList" class="trip-list"></div>
+                </section>
+
+                <section class="section" style="margin-top: 24px;">
+                    <div class="quick-grid">
+                        <a href="tickets.html" class="quick-card">
+                            <div>
+                                <span class="quick-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8.5a2.5 2.5 0 0 0 0 5V17a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3.5a2.5 2.5 0 0 0 0-5V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v1.5Z"/><path d="M9 8h6"/><path d="M9 16h6"/><path d="M12 5v14"/></svg></span>
+                                <h3>بلیط‌های من</h3>
+                                <p>مشاهده بلیط‌های صادر شده</p>
+                            </div>
+                        </a>
+
+                        <a href="reservations.html" class="quick-card">
+                            <div>
+                                <span class="quick-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v3"/><path d="M17 4v3"/><path d="M5 8h14"/><rect x="5" y="6" width="14" height="14" rx="3"/><path d="m9 14 2 2 4-5"/></svg></span>
+                                <h3>رزروهای من</h3>
+                                <p>پیگیری وضعیت رزروها</p>
+                            </div>
+                        </a>
+
+                        <a href="wallet.html" class="quick-card">
+                            <div>
+                                <span class="quick-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h13a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7.5A2.5 2.5 0 0 1 5.5 5H17"/><path d="M16 13h4"/><path d="M16 13.01v-.01"/></svg></span>
+                                <h3>کیف پول</h3>
+                                <p>مدیریت موجودی و شارژ حساب</p>
+                            </div>
+                        </a>
+
+                        <a href="payments.html" class="quick-card">
+                            <div>
+                                <span class="quick-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="12" rx="3"/><path d="M4 10h16"/><path d="M8 15h3"/><path d="M14 15h2"/></svg></span>
+                                <h3>پرداخت‌ها</h3>
+                                <p>مشاهده سوابق پرداخت</p>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

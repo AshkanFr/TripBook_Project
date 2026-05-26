@@ -1,3 +1,3 @@
-TripBook Apple-inspired UI
+TripBook UI with Light/Dark mode toggle
 Start from login.html
-Static HTML/CSS/JS prototype.
+Font files are not included.

@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payments</title>
+    <script>
+    (function () {
+        var theme = localStorage.getItem("tripbook-theme") || "light";
+
+        if (theme === "dark") {
+            document.documentElement.classList.add("dark-mode");
+        }
+    })();
+</script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -32,6 +41,8 @@
 
                 <div class="navbar-actions">
                     <a class="logout-link" href="login.html">خروج</a>
+
+                    <button type="button" class="theme-toggle" data-theme-toggle aria-label="تغییر حالت نمایش"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 7 7 0 1 0 20 15.5Z"/></svg></button>
 
                     <a class="account-chip" href="account.html">
                         <span>حساب کاربری</span>
