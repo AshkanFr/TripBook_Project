@@ -115,7 +115,7 @@ button {
     position: absolute;
     top: -84px;
     left: -62px;
-    background: radial-gradient(circle, rgba(249, 115, 22, 0.22), transparent 68%);
+    background: radial-gradient(circle, rgb(24, 26, 33), transparent 68%);
     border-radius: 50%;
 }
 
@@ -1051,7 +1051,7 @@ td:last-child {
     height: 520px;
     left: -180px;
     bottom: -210px;
-    background: radial-gradient(circle, rgba(255, 214, 170, 0.36), transparent 68%);
+    background: radial-gradient(circle, rgb(23, 24, 29), transparent 68%);
 }
 
 .login-card {
