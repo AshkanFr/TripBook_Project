@@ -7,9 +7,24 @@
     <script>
     (function () {
         var theme = localStorage.getItem("tripbook-theme") || "light";
+        var html = document.documentElement;
 
-        if (theme === "dark") {
-            document.documentElement.classList.add("dark-mode");
+        function applyTheme() {
+            var body = document.body;
+
+            if (theme === "dark") {
+                html.classList.add("dark-mode");
+                if (body) body.classList.add("dark-mode");
+            } else {
+                html.classList.remove("dark-mode");
+                if (body) body.classList.remove("dark-mode");
+            }
+        }
+
+        if (document.body) {
+            applyTheme();
+        } else {
+            document.addEventListener("DOMContentLoaded", applyTheme);
         }
     })();
 </script>
