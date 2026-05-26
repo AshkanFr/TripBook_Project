@@ -115,7 +115,7 @@ button {
     position: absolute;
     top: -84px;
     left: -62px;
-    background: radial-gradient(circle, rgb(24, 26, 33), transparent 68%);
+    /* background: radial-gradient(circle, rgb(24, 26, 33), transparent 68%); */
     border-radius: 50%;
 }
 
@@ -1042,7 +1042,7 @@ td:last-child {
     height: 380px;
     right: -120px;
     top: -110px;
-    /* background: radial-gradient(circle, rgba(249, 115, 22, 0.18), transparent 70%); */
+    background: radial-gradient(circle, rgba(255, 255, 255, 0), transparent 68%) !important;
     filter: blur(2px);
 }
 
