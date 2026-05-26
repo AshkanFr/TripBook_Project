@@ -1216,7 +1216,7 @@ body.dark-mode .login-mark,
 body.dark-mode .theme-toggle,
 body.dark-mode .account-chip,
 body.dark-mode .search-box {
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(23, 25, 30, 0.61);
     border-color: var(--line);
 }
 
