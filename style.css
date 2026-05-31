@@ -1375,3 +1375,29 @@ body.dark-mode .theme-toggle:hover {
     color: var(--primary-dark);
     background: rgba(255, 255, 255, 0.09);
 }
+
+
+/* Login / Sign in links */
+.ltr-input {
+    direction: ltr;
+    text-align: left;
+}
+
+.login-link {
+    display: block;
+    margin-top: 16px;
+    color: var(--primary-dark);
+    text-align: center;
+    font-size: 13px;
+    font-weight: 800;
+    transition: 0.18s ease;
+}
+
+.login-link:hover {
+    color: var(--primary);
+    transform: translateY(-1px);
+}
+
+.signup-text {
+    margin: 8px 0 18px;
+}

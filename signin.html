@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TripBook</title>
+    <title>Sign In</title>
     <script>
     (function () {
         var theme = localStorage.getItem("tripbook-theme") || "light";
@@ -43,22 +43,26 @@
             </div>
 
             <h1>TripBook</h1>
+            <p class="signup-text">برای ساخت حساب کاربری، اطلاعات زیر را وارد کنید.</p>
 
-            <form id="loginForm">
+            <form action="home.html" method="get">
                 <div class="form-group">
-                    <label>ایمیل / شماره موبایل</label>
-                    <input class="ltr-input" type="text" placeholder="example@email.com">
+                    <label>ایمیل خود را وارد کنید</label>
+                    <input class="ltr-input" type="text" placeholder="example@email.com" >
                 </div>
 
                 <div class="form-group" style="margin-top: 14px;">
-                    <label>رمز عبور</label>
-                    <input class="ltr-input" type="password" placeholder="••••••••">
+                    <label>رمز عبور وارد کنید</label>
+                    <input class="ltr-input" type="password" placeholder="••••••••" >
                 </div>
 
-                <button type="submit" class="btn">ورود</button>
-            </form>
+                <div class="form-group" style="margin-top: 14px;">
+                    <label>رمز عبور را تکرار کنید</label>
+                    <input class="ltr-input" type="password" placeholder="••••••••" >
+                </div>
 
-            <a class="login-link" href="signin.html">اگر حساب کاربری ندارید کلیک کنید</a>
+                <button type="submit" class="btn">ساخت حساب کاربری</button>
+            </form>
         </section>
     </main>
 
